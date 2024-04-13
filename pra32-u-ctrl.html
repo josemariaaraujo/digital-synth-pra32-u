@@ -39,6 +39,105 @@ td.keyh {
   height: 63px;
   border: 1px solid transparent;
 }
+
+### teclado
+
+:root {
+  --keyboard: hsl(300, 100%, 16%);
+  --keyboard-shadow: hsla(19, 50%, 66%, 0.2);
+  --keyboard-border: hsl(20, 91%, 5%);
+  --black-10: hsla(0, 0%, 0%, 0.1);
+  --black-20: hsla(0, 0%, 0%, 0.2);
+  --black-30: hsla(0, 0%, 0%, 0.3);
+  --black-50: hsla(0, 0%, 0%, 0.5);
+  --black-60: hsla(0, 0%, 0%, 0.6);
+  --white-20: hsla(0, 0%, 100%, 0.2);
+  --white-50: hsla(0, 0%, 100%, 0.5);
+  --white-80: hsla(0, 0%, 100%, 0.8);
+}
+
+.white,
+.black {
+  position: relative;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0.5rem 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+#keyboard li:first-child {
+  border-radius: 5px 0 5px 5px;
+}
+
+#keyboard li:last-child {
+  border-radius: 0 5px 5px 5px;
+}
+
+.white {
+  height: 12.5rem;
+  width: 3.5rem;
+  z-index: 1;
+  border-left: 1px solid hsl(0, 0%, 73%);
+  border-bottom: 1px solid hsl(0, 0%, 73%);
+  border-radius: 0 0 5px 5px;
+  box-shadow: -1px 0 0 var(--white-80) inset, 0 0 5px hsl(0, 0%, 80%) inset,
+    0 0 3px var(--black-20);
+  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
+  color: var(--black-30);
+}
+
+.black {
+  height: 8rem;
+  width: 2rem;
+  margin: 0 0 0 -1rem;
+  z-index: 2;
+  border: 1px solid black;
+  border-radius: 0 0 3px 3px;
+  box-shadow: -1px -1px 2px var(--white-20) inset,
+    0 -5px 2px 3px var(--black-60) inset, 0 2px 4px var(--black-50);
+  background: linear-gradient(45deg, hsl(0, 0%, 13%) 0%, hsl(0, 0%, 33%) 100%);
+  color: var(--white-50);
+}
+
+.white.pressed {
+  border-top: 1px solid hsl(0, 0%, 47%);
+  border-left: 1px solid hsl(0, 0%, 60%);
+  border-bottom: 1px solid hsl(0, 0%, 60%);
+  box-shadow: 2px 0 3px var(--black-10) inset,
+    -5px 5px 20px var(--black-20) inset, 0 0 3px var(--black-20);
+  background: linear-gradient(to bottom, white 0%, hsl(0, 0%, 91%) 100%);
+  outline: none;
+}
+
+.black.pressed {
+  box-shadow: -1px -1px 2px var(--white-20) inset,
+    0 -2px 2px 3px var(--black-60) inset, 0 1px 2px var(--black-50);
+  background: linear-gradient(
+    to right,
+    hsl(0, 0%, 27%) 0%,
+    hsl(0, 0%, 13%) 100%
+  );
+  outline: none;
+}
+
+.offset {
+  margin: 0 0 0 -1rem;
+}
+
+#keyboard {
+  height: 15.25rem;
+  margin: 0.5rem;
+  padding: 3rem 0 0 3rem;
+  position: relative;
+  border: 1px solid var(--keyboard-border);
+  border-radius: 1rem;
+  background-color: var(--keyboard);
+  box-shadow: 0 0 50px var(--black-50) inset, 0 1px var(--keyboard-shadow) inset,
+    0 5px 15px var(--black-50);
+}
 </style>
 <script>
 const APP_NAME_VERSION = "PRA32-U CTRL v2.2.2";
@@ -1577,46 +1676,192 @@ function getStoredCCValueString(index, number) {
 
 </table>
 
-<table>
-<tr>
-<td class="keyh"></td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(49)" onmouseup="noteOff(49)" ontouchstart="noteOn(49)" ontouchend="noteOff(49)">C#3</td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(51)" onmouseup="noteOff(51)" ontouchstart="noteOn(51)" ontouchend="noteOff(51)">D#3</td>
-<td class="keyp"></td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(54)" onmouseup="noteOff(54)" ontouchstart="noteOn(54)" ontouchend="noteOff(54)">F#3</td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(56)" onmouseup="noteOff(56)" ontouchstart="noteOn(56)" ontouchend="noteOff(56)">G#3</td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(58)" onmouseup="noteOff(58)" ontouchstart="noteOn(58)" ontouchend="noteOff(58)">A#3</td>
-<td class="keyp"></td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(61)" onmouseup="noteOff(61)" ontouchstart="noteOn(61)" ontouchend="noteOff(61)">C#4</td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(63)" onmouseup="noteOff(63)" ontouchstart="noteOn(63)" ontouchend="noteOff(63)">D#4</td>
-<td class="keyp"></td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(66)" onmouseup="noteOff(66)" ontouchstart="noteOn(66)" ontouchend="noteOff(66)">F#4</td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(68)" onmouseup="noteOff(68)" ontouchstart="noteOn(68)" ontouchend="noteOff(68)">G#4</td>
-<td class="keyb" onContextmenu="return false" onmousedown="noteOn(70)" onmouseup="noteOff(70)" ontouchstart="noteOn(70)" ontouchend="noteOff(70)">A#4</td>
-<td class="keyp"></td>
-<td class="keyh"></td>
-</tr>
-</table>
 
-<table>
-<tr>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(48)" onmouseup="noteOff(48)" ontouchstart="noteOn(48)" ontouchend="noteOff(48)">C3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(50)" onmouseup="noteOff(50)" ontouchstart="noteOn(50)" ontouchend="noteOff(50)">D3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(52)" onmouseup="noteOff(52)" ontouchstart="noteOn(52)" ontouchend="noteOff(52)">E3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(53)" onmouseup="noteOff(53)" ontouchstart="noteOn(53)" ontouchend="noteOff(53)">F3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(55)" onmouseup="noteOff(55)" ontouchstart="noteOn(55)" ontouchend="noteOff(55)">G3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(57)" onmouseup="noteOff(57)" ontouchstart="noteOn(57)" ontouchend="noteOff(57)">A3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(59)" onmouseup="noteOff(59)" ontouchstart="noteOn(59)" ontouchend="noteOff(59)">B3</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(60)" onmouseup="noteOff(60)" ontouchstart="noteOn(60)" ontouchend="noteOff(60)">C4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(62)" onmouseup="noteOff(62)" ontouchstart="noteOn(62)" ontouchend="noteOff(62)">D4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(64)" onmouseup="noteOff(64)" ontouchstart="noteOn(64)" ontouchend="noteOff(64)">E4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(65)" onmouseup="noteOff(65)" ontouchstart="noteOn(65)" ontouchend="noteOff(65)">F4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(67)" onmouseup="noteOff(67)" ontouchstart="noteOn(67)" ontouchend="noteOff(67)">G4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(69)" onmouseup="noteOff(69)" ontouchstart="noteOn(69)" ontouchend="noteOff(69)">A4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(71)" onmouseup="noteOff(71)" ontouchstart="noteOn(71)" ontouchend="noteOff(71)">B4</td>
-<td class="key"  onContextmenu="return false" onmousedown="noteOn(72)" onmouseup="noteOff(72)" ontouchstart="noteOn(72)" ontouchend="noteOff(72)">C5</td>
-</tr>
-</table>
+<ul id="keyboard">
+  <li note="C" class="white">Q</li>
+  <li note="C#" class="black">2</li>
+  <li note="D" class="white offset">W</li>
+  <li note="D#" class="black">3</li>
+  <li note="E" class="white offset">E</li>
+  <li note="F" class="white">R</li>
+  <li note="F#" class="black">5</li>
+  <li note="G" class="white offset">T</li>
+  <li note="G#" class="black">6</li>
+  <li note="A" class="white offset">Y</li>
+  <li note="A#" class="black">7</li>
+  <li note="B" class="white offset">U</li>
+  <li note="C2" class="white">I</li>
+  <li note="C#2" class="black">9</li>
+  <li note="D2" class="white offset">O</li>
+  <li note="D#2" class="black">0</li>
+  <li note="E2" class="white offset">P</li>
+  <li note="F2" class="white">+</li>
+  <li note="F#2" class="black">T</li>
+  <li note="G2" class="white offset">G</li>
+  <li note="G#2" class="black">Y</li>
+  <li note="A2" class="white offset">H</li>
+  <li note="A#2" class="black">U</li>
+  <li note="B2" class="white offset">J</li>
+  <li note="C3" class="white">I</li>
+  <li note="C#3" class="black">9</li>
+  <li note="D3" class="white offset">O</li>
+  <li note="D#3" class="black">0</li>
+  <li note="E3" class="white offset">P</li>
+</ul>
 
 </body>
+<script>
+const getElementByNote = (note) =>
+  note && document.querySelector(`[note="${note}"]`);
+
+const keys = {
+  Q: { element: getElementByNote("C"), note: "C", octaveOffset: 0 },
+  2: { element: getElementByNote("C#"), note: "C#", octaveOffset: 0 },
+  W: { element: getElementByNote("D"), note: "D", octaveOffset: 0 },
+  3: { element: getElementByNote("D#"), note: "D#", octaveOffset: 0 },
+  E: { element: getElementByNote("E"), note: "E", octaveOffset: 0 },
+  R: { element: getElementByNote("F"), note: "F", octaveOffset: 0 },
+  5: { element: getElementByNote("F#"), note: "F#", octaveOffset: 0 },
+  T: { element: getElementByNote("G"), note: "G", octaveOffset: 0 },
+  6: { element: getElementByNote("G#"), note: "G#", octaveOffset: 0 },
+  Y: { element: getElementByNote("A"), note: "A", octaveOffset: 1 },
+  7: { element: getElementByNote("A#"), note: "A#", octaveOffset: 1 },
+  U: { element: getElementByNote("B"), note: "B", octaveOffset: 1 },
+  I: { element: getElementByNote("C2"), note: "C", octaveOffset: 1 },
+  9: { element: getElementByNote("C#2"), note: "C#", octaveOffset: 1 },
+  O: { element: getElementByNote("D2"), note: "D", octaveOffset: 1 },
+  0: { element: getElementByNote("D#2"), note: "D#", octaveOffset: 1 },
+  P: { element: getElementByNote("E2"), note: "E", octaveOffset: 1 },
+  "+": { element: getElementByNote("F2"), note: "F", octaveOffset: 1 },
+  
+  Z: { element: getElementByNote("C2"), note: "C", octaveOffset: 1 },
+  S: { element: getElementByNote("C#2"), note: "C#", octaveOffset: 1 },
+  X: { element: getElementByNote("D2"), note: "D", octaveOffset: 1 },
+  D: { element: getElementByNote("D#2"), note: "D#", octaveOffset: 1 },
+  C: { element: getElementByNote("E2"), note: "E", octaveOffset: 1 },
+  V: { element: getElementByNote("F2"), note: "F", octaveOffset: 1 },
+  G: { element: getElementByNote("F#2"), note: "F#", octaveOffset: 1 },  
+  B: { element: getElementByNote("G2"), note: "G", octaveOffset: 1 },
+  H: { element: getElementByNote("G#2"), note: "G#", octaveOffset: 1 },
+  N: { element: getElementByNote("A2"), nonte: "A", octaveOffset: 2 },
+  J: { element: getElementByNote("A#2"), note: "A#", octaveOffset: 2 },
+  M: { element: getElementByNote("B2"), note: "B", octaveOffset: 2 },
+  ",": { element: getElementByNote("C3"), note: "C", octaveOffset: 2 },
+  L: { element: getElementByNote("C#3"), note: "C#", octaveOffset: 2 },
+  ".": { element: getElementByNote("D3"), note: "D", octaveOffset: 2 },
+  Ç: { element: getElementByNote("D#3"), note: "D#", octaveOffset: 2 },
+  "-": { element: getElementByNote("E3"), note: "E", octaveOffset: 2 }
+};
+
+const getHz = (note = "A", octave = 4) => {
+  let N = 0;
+  switch (note) {
+    default:
+    case "A":
+      N = 0;
+      break;
+    case "A#":
+    case "Bb":
+      N = 1;
+      break;
+    case "B":
+      N = 2;
+      break;
+    case "C":
+      N = 3;
+      break;
+    case "C#":
+    case "Db":
+      N = 4;
+      break;
+    case "D":
+      N = 5;
+      break;
+    case "D#":
+    case "Eb":
+      N = 6;
+      break;
+    case "E":
+      N = 7;
+      break;
+    case "F":
+      N = 8;
+      break;
+    case "F#":
+    case "Gb":
+      N = 9;
+      break;
+    case "G":
+      N = 10;
+      break;
+    case "G#":
+    case "Ab":
+      N = 11;
+      break;
+  }
+  N += 12 * (octave)+9;
+  return N;
+};
+
+const pressedNotes = new Map();
+let clickedKey = "";
+
+const playKey = (key) => {
+  if (!keys[key]) {
+    return;
+  }
+  
+  const freq = getHz(keys[key].note, (keys[key].octaveOffset || 0) + 3);
+
+  keys[key].element.classList.add("pressed");
+  pressedNotes.set(key, freq);
+  noteOn(pressedNotes.get(key));
+};
+
+const stopKey = (key) => {
+  if (!keys[key]) {
+    return;
+  }
+
+  keys[key].element.classList.remove("pressed");
+  const note = pressedNotes.get(key);
+
+  if (note) {
+    noteOff(note);
+
+    pressedNotes.delete(key);
+  }
+};
+
+document.addEventListener("keydown", (e) => {
+  const eventKey = e.key.toUpperCase();
+  const key = eventKey === ";" ? "semicolon" : eventKey;
+  
+  if (!key || pressedNotes.get(key)) {
+    return;
+  }
+  playKey(key);
+});
+
+document.addEventListener("keyup", (e) => {
+  const eventKey = e.key.toUpperCase();
+  const key = eventKey === ";" ? "semicolon" : eventKey;
+  
+  if (!key) {
+    return;
+  }
+  stopKey(key);
+});
+
+for (const [key, { element }] of Object.entries(keys)) {
+  element.addEventListener("mousedown", () => {
+    playKey(key);
+    clickedKey = key;
+  });
+}
+
+document.addEventListener("mouseup", () => {
+  stopKey(clickedKey);
+});
+</script>
 </html>
